@@ -1,10 +1,24 @@
-"""
-    配置了 SimNow 常用的四个环境
-    可以使用监控平台 http://121.37.80.177:50080/detail.html 查看前置服务是否正常
-"""
-
-# 也可以按需配置其他的支持 ctp官方ctpapi库的柜台
-# 注意需要同时修改相应的 user/password/broker_id/authcode/appid 等信息
+target={
+    'TF0401':{
+        'starttime':'09:25:00',
+        'openpr':0, #0 根据集合竞价动态，非0 手工指定价格
+        'sell':{
+            'from':5,
+            'to':10,
+            'split':1,
+            'vol':1,
+        },
+        'buy': {
+            'from': 5,
+            'to': 10,
+            'split': 1,
+            'vol': 1,
+        },
+        'tick': 50, #最小跳动价格
+        'close':1,  #平仓挂单加多少tick
+        'limit':10, #按多少个tick止损
+    },
+}
 
 # SimNow 提供的四个环境
 simnow={
@@ -31,8 +45,6 @@ simnow={
     "authcode": "0000000000000000",
     "appid": "simnow_client_test",
 }
-
-
 # GF
 gf={
     "fronts": {
