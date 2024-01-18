@@ -223,6 +223,7 @@ class CTdSpiImpl(tdapi.CThostFtdcTraderSpi):
             return
 
         self._is_login = True
+        self.settlement_info_confirm()
 
     def settlement_info_confirm(self):
         """投资者结算结果确认"""
@@ -496,12 +497,12 @@ class CTdSpiImpl(tdapi.CThostFtdcTraderSpi):
 
 if __name__ == "__main__":
     spi = CTdSpiImpl(
-        config.fronts["电信1"]["td"],
-        config.user,
-        config.password,
-        config.authcode,
-        config.appid,
-        config.broker_id,
+        config.simnow['fronts']["电信"]["td"],
+        config.simnow['user'],
+        config.simnow['password'],
+        config.simnow['authcode'],
+        config.simnow['appid'],
+        config.simnow['broker_id'],
     )
 
     # 等待登录成功
@@ -525,8 +526,8 @@ if __name__ == "__main__":
     # spi.qry_depth_market_data()
     # spi.qry_depth_market_data(instrument_id="ZC309")
     # spi.market_order_insert("CZCE", "CF411")
-    # spi.limit_order_insert("CZCE", "CF411", 15000)
-    # spi.order_cancel1("CZCE", "CF411", "        4858")
+    #spi.limit_order_insert("CZCE", "m2405",2993)
+    #spi.order_cancel1("CZCE", "m2405", "300545")
     # spi.order_cancel2("CZCE", "CF411", 1, -1111111, "3")
 
     spi.wait()
